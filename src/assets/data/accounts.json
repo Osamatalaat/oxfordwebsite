@@ -1,0 +1,12 @@
+[
+  {
+    "email": "student@oxford.edu",
+    "password": "password123",
+    "role": "student"
+  },
+  {
+    "email": "admin@oxford.edu",
+    "password": "admin123",
+    "role": "admin"
+  }
+]

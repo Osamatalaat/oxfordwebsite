@@ -1,0 +1,121 @@
+
+
+[
+  {
+    "id": 1,
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "category": "Software Engineering",
+    "availableCopies": 4,
+    "images": [
+      "https://example.com/images/clean-code.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Introduction to Algorithms",
+    "author": "Cormen, Leiserson, Rivest, Stein",
+    "category": "Computer Science",
+    "availableCopies": 2,
+    "images": [
+      "https://example.com/images/algorithms.jpg"
+    ]
+
+  },
+  {
+    "id": 3,
+    "title": "Principles of Marketing",
+    "author": "Philip Kotler",
+    "category": "Marketing",
+    "availableCopies": 5,
+    "images": [
+      "https://example.com/images/marketing.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "The Lean Startup",
+    "author": "Eric Ries",
+    "category": "Entrepreneurship",
+    "availableCopies": 3,
+    "images": [
+      "https://example.com/images/lean-startup.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "The Art of War",
+    "author": "Sun Tzu",
+    "category": "Strategy",
+    "availableCopies": 6,
+    "images": [
+      "https://example.com/images/art-of-war.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "The Pragmatic Programmer",
+    "author": "Andrew Hunt, David Thomas",
+    "category": "Software Development",
+    "availableCopies": 1  ,
+    "images": [ "https://example.com/images/pragmatic-programmer.jpg"]
+  },
+  {
+    "id": 7,
+    "title": "Artificial Intelligence: A Modern Approach",
+    "author": "Stuart Russell, Peter Norvig",
+    "category": "AI",
+    "availableCopies": 2,
+    "images": [
+      "https://example.com/images/artificial-intelligence.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Design Patterns: Elements of Reusable Object-Oriented Software",
+    "author": "Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides",
+    "category": "Software Design",
+    "availableCopies": 4  ,
+    "images": [ "https://example.com/images/design-patterns.jpg"]
+  },
+  {
+    "id": 9,
+    "title": "Deep Learning",
+    "author": "Ian Goodfellow, Yoshua Bengio, Aaron Courville",
+    "category": "Machine Learning",
+    "availableCopies": 3,
+    "images": [
+      "https://example.com/images/deep-learning.jpg"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Blockchain Basics: A Non-Technical Introduction in 25 Steps",
+    "author": "Daniel Drescher",
+    "category": "Blockchain",
+    "availableCopies": 5,
+    "images": [
+      "https://example.com/images/blockchain-basics.jpg"
+    ]
+  } ,
+  {
+    "id": 11,
+    "title": "The Phoenix Project: A Novel About IT, DevOps, and Helping Your Business Win",
+    "author": "Gene Kim, Kevin Behr, George Spafford",
+    "category": "DevOps",
+    "availableCopies": 2,
+    "images": [
+      "https://example.com/images/phoenix-project.jpg"
+    ]
+  },
+  {
+    "id": 12,
+    "title": "You Don't Know JS: Scope & Closures",
+    "author": "Kyle Simpson",
+    "category": "JavaScript",
+    "availableCopies": 4,
+    "images": [
+      "https://example.com/images/you-dont-know-js.jpg"
+    ]
+  }
+]

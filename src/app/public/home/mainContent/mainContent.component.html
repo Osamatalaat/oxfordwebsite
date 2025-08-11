@@ -1,0 +1,161 @@
+<!-- Main Content Component -->
+<section class="py-16 sm:py-20 lg:py-24 bg-[--color-white]">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+
+    <!-- Header Section -->
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-12 lg:mb-16">
+
+      <!-- Left Side - Title -->
+      <div class="lg:w-1/2 mb-8 lg:mb-0">
+        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-[--color-oxford-blue] leading-tight">
+          Discover Your Path to
+        </h2>
+        <h3 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mt-2">
+          <span class="text-[--color-oxford-blue]">Academic</span>
+          <span class="text-[--color-mid-blue] relative ml-2">
+            Excellence
+            <!-- Underline decoration -->
+            <div class="absolute bottom-0 left-0 w-full h-1 sm:h-1.5 lg:h-2 bg-[--color-mid-blue]"></div>
+          </span>
+        </h3>
+      </div>
+
+      <!-- Right Side - Description and Navigation -->
+      <div class="lg:w-1/2 lg:pl-12">
+        <p class="text-[--color-cool-gray] text-lg sm:text-xl leading-relaxed mb-8">
+          Choose your faculty and embark on a journey of academic excellence tailored to
+          your interests and career aspirations. Delve into our diverse range of faculties, each
+          offering specialized programs and opportunities for growth.
+        </p>
+
+        <!-- Navigation Arrows -->
+        <div class="flex gap-4">
+          <button (click)="previousSlide()" [disabled]="currentIndex === 0"
+            class="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-[--color-cool-gray] flex items-center justify-center transition-all duration-300 hover:border-[--color-mid-blue] hover:text-[--color-mid-blue] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-[--color-cool-gray] disabled:hover:text-[--color-cool-gray]"
+            [attr.aria-label]="'Previous departments'">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+            </svg>
+          </button>
+
+          <button (click)="nextSlide()" [disabled]="currentIndex >= departments.length - itemsPerView"
+            class="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-[--color-cool-gray] flex items-center justify-center transition-all duration-300 hover:border-[--color-mid-blue] hover:text-[--color-mid-blue] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-[--color-cool-gray] disabled:hover:text-[--color-cool-gray]"
+            [attr.aria-label]="'Next departments'">
+            <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="flex justify-center items-center py-20">
+      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-[--color-mid-blue]"></div>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error && !isLoading" class="text-center py-20">
+      <div class="text-red-500 text-lg mb-4">
+        <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+        </svg>
+        Error loading departments
+      </div>
+      <p class="text-[--color-cool-gray] mb-4">{{ error }}</p>
+      <button (click)="loadDepartments()"
+        class="bg-[--color-mid-blue] text-white px-6 py-2 rounded-lg hover:bg-[--color-oxford-blue] transition-colors">
+        Try Again
+      </button>
+    </div>
+
+    <!-- Departments Grid -->
+    <div *ngIf="!isLoading && !error" class="relative overflow-hidden">
+      <div class="flex transition-transform duration-500 ease-out"
+        [style.transform]="'translateX(-' + (currentIndex * (100 / itemsPerView)) + '%)'">
+
+        <div *ngFor="let department of departments; let i = index" class="flex-shrink-0 px-2 sm:px-3"
+          [style.width]="(100 / itemsPerView) + '%'">
+
+          <!-- Department Card -->
+          <div
+            class="group relative h-80 sm:h-96  overflow-hidden cursor-pointer transform transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+            (click)="onDepartmentClick(department)" [attr.aria-label]="'Explore ' + department.name + ' department'">
+
+            <!-- Background Image -->
+            <div class="absolute inset-0">
+              <img
+                [src]="department.image || 'https://via.placeholder.com/400x400/f3f4f6/9ca3af?text=' + department.name"
+                [alt]="department.name + ' department'"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                (error)="onImageError($event, department)" loading="lazy">
+
+              <!-- Dark Overlay -->
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent group-hover:from-black/90 transition-all duration-300">
+              </div>
+            </div>
+
+            <!-- Content Overlay -->
+            <div class="absolute inset-0 flex flex-col justify-end p-6 sm:p-8">
+              <!-- Department Name -->
+              <h4
+                class="text-white text-xl sm:text-2xl lg:text-3xl font-bold mb-2 transform transition-transform duration-300 group-hover:translate-y-[-4px]">
+                {{ department.name }}
+              </h4>
+
+              <!-- Description (shown on hover for larger screens) -->
+              <p
+                class="text-white/90 text-sm sm:text-base leading-relaxed mb-4 opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 lg:group-hover:translate-y-0">
+                {{ department.description || 'Explore our comprehensive programs and discover your potential in ' +
+                department.name.toLowerCase() + '.' }}
+              </p>
+
+              <!-- Arrow Icon -->
+              <div class="flex items-center justify-between">
+                <span class="text-white/80 text-sm">
+                  {{ department.programsCount || 0 }} Programs Available
+                </span>
+                <div
+                  class="w-10 h-10 sm:w-12 sm:h-12 bg-[var(--color-mid-blue)]  flex items-center justify-center transform transition-all duration-300 group-hover:bg-white group-hover:scale-110">
+                  <svg
+                    class="w-5 h-5 sm:w-6 sm:h-6 text-white transform transition-transform duration-300 group-hover:translate-x-1 group-hover:text-[var(--color-oxford-blue)] "
+                    fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Hover Effect Border -->
+            <div
+              class="absolute inset-0 border-2 border-transparent group-hover:border-[--color-mid-blue] rounded-lg transition-colors duration-300">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Progress Indicators -->
+    <div *ngIf="!isLoading && !error && departments.length > itemsPerView" class="flex justify-center mt-8 sm:mt-12">
+      <div class="flex space-x-2">
+        <button *ngFor="let page of getPageIndicators(); let i = index" (click)="goToPage(i)"
+          class="w-3 h-3 rounded-full transition-all duration-300"
+          [class.bg-[--color-mid-blue]]="i === getCurrentPage()" [class.bg-[--color-cool-gray]]="i !== getCurrentPage()"
+          [class.opacity-50]="i !== getCurrentPage()" [attr.aria-label]="'Go to page ' + (i + 1)">
+        </button>
+
+      </div>
+    </div>
+
+    <!-- View All Departments Button -->
+    <div *ngIf="!isLoading && !error" class="text-center mt-12 sm:mt-16">
+      <button (click)="viewAllDepartments()"
+        class="bg-[var(--color-mid-blue)] hover:bg-[var(--color-oxford-blue)] text-white font-semibold py-4 px-8 sm:px-12 cursor-pointer transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+        View All Departments
+      </button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,90 @@
+<!-- Statistics Section Component -->
+<section class="py-16 sm:py-20 lg:py-12 ">
+  <div class="container mx-auto">
+
+    <!-- Statistics Grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+
+      <!-- Students Stat -->
+      <div class="text-center">
+        <!-- Icon -->
+        <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 text-[var(--color-oxford-blue)] bg-[var(--color-light-blue)] rounded-full">
+          <i class="fa-solid fa-person text-5xl pt-3"></i>
+        </div>
+
+        <!-- Number -->
+        <div class="mb-2">
+          <span class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-oxford-blue)]">
+            {{ stats.students.toLocaleString() }}+
+          </span>
+        </div>
+
+        <!-- Label -->
+        <h3 class="text-base sm:text-lg font-medium text-[var(--color-cool-gray)]">
+          Students
+        </h3>
+      </div>
+
+      <!-- Faculty Stat -->
+      <div class="text-center">
+        <!-- Icon -->
+        <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 text-[var(--color-oxford-blue)] bg-[var(--color-light-blue)] rounded-full">
+          <i class="fas fa-university text-5xl pt-3"></i>
+        </div>
+
+        <!-- Number -->
+        <div class="mb-2">
+          <span class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-oxford-blue)]">
+            {{ stats.faculty.toLocaleString() }}+
+          </span>
+        </div>
+
+        <!-- Label -->
+        <h3 class="text-base sm:text-lg font-medium text-[var(--color-cool-gray)]">
+          Faculty
+        </h3>
+      </div>
+
+      <!-- Programs Stat -->
+      <div class="text-center">
+        <!-- Icon -->
+        <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 text-[var(--color-oxford-blue)] bg-[var(--color-light-blue)] rounded-full">
+          <i class="fa-solid fa-graduation-cap text-5xl pt-3"></i>
+        </div>
+
+        <!-- Number -->
+        <div class="mb-2">
+          <span class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-oxford-blue)]">
+            {{ stats.programs }}+
+          </span>
+        </div>
+
+        <!-- Label -->
+        <h3 class="text-base sm:text-lg font-medium text-[var(--color-cool-gray)]">
+          Programs
+        </h3>
+      </div>
+
+      <!-- Awards Stat -->
+      <div class="text-center">
+        <!-- Icon -->
+        <div class="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 text-[var(--color-oxford-blue)] bg-[var(--color-light-blue)] rounded-full">
+          <i class="fa-solid fa-book text-5xl pt-3"></i>
+        </div>
+
+        <!-- Number -->
+        <div class="mb-2">
+          <span class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--color-oxford-blue)]">
+            {{ stats.awards }}+
+          </span>
+        </div>
+
+        <!-- Label -->
+        <h3 class="text-base sm:text-lg font-medium text-[var(--color-cool-gray)]">
+          Books
+        </h3>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="48" height="64" viewBox="0 0 48 64" aria-hidden="true">
+  <defs>
+    <linearGradient id="g-main" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#5AB0FF"/>
+      <stop offset="60%" stop-color="#005ABB"/>
+      <stop offset="100%" stop-color="#002147"/>
+    </linearGradient>
+
+    <filter id="f-shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+
+    <!-- glossy highlight -->
+    <radialGradient id="g-high" cx="30%" cy="20%" r="60%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="50%" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- marker body -->
+  <g filter="url(#f-shadow)">
+    <path d="M24 2C14.058 2 6 10.04 6 20.5 6 33.5 24 62 24 62s18-28.5 18-41.5C42 10.04 33.942 2 24 2z"
+          fill="url(#g-main)" stroke="#062238" stroke-width="1"/>
+
+    <!-- inner rim for 3D feel -->
+    <path d="M24 8.5c-7.18 0-13 5.82-13 13 0 10.2 11.2 27.8 13 30.7 1.8-2.9 13-20.5 13-30.7 0-7.18-5.82-13-13-13z"
+          fill="rgba(255,255,255,0.03)"/>
+  </g>
+
+  <!-- glossy highlight -->
+  <ellipse cx="18" cy="14" rx="8.5" ry="5" fill="url(#g-high)" opacity="0.95"/>
+
+  <!-- center hole / pin dot -->
+  <circle cx="24" cy="20.5" r="6" fill="#ffffff" opacity="0.95"/>
+  <circle cx="24" cy="20.5" r="3.2" fill="#005ABB"/>
+
+</svg>

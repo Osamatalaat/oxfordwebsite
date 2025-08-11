@@ -1,0 +1,198 @@
+<!-- Attendance Dashboard Component -->
+<div class="attendance-container p-6" style="background-color: var(--color-white);">
+
+  <!-- Header Section -->
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold" style="color: var(--color-oxford-blue);">Attendance</h1>
+
+    <!-- Filter Controls -->
+    <div class="flex gap-4">
+      <!-- Month Filter -->
+      <div class="relative">
+        <select
+          [(ngModel)]="selectedMonth"
+          (change)="onFilterChange()"
+          class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          style="background-color: var(--color-white); color: var(--color-oxford-blue);">
+          <option value="April 2024">📅 April 2024</option>
+          <option value="March 2024">📅 March 2024</option>
+          <option value="May 2024">📅 May 2024</option>
+        </select>
+      </div>
+
+      <!-- Week Filter -->
+      <div class="relative">
+        <select
+          [(ngModel)]="selectedWeek"
+          (change)="onFilterChange()"
+          class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          style="background-color: var(--color-white); color: var(--color-oxford-blue);">
+          <option value="Week 2-3">Week 2-3</option>
+          <option value="Week 1-2">Week 1-2</option>
+          <option value="Week 3-4">Week 3-4</option>
+        </select>
+      </div>
+
+      <!-- Class Filter -->
+      <div class="relative">
+        <select
+          [(ngModel)]="selectedClass"
+          (change)="onFilterChange()"
+          class="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          style="background-color: var(--color-white); color: var(--color-oxford-blue);">
+          <option value="Class 11A">Class 11A</option>
+          <option value="Class 11B">Class 11B</option>
+          <option value="Class 12A">Class 12A</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Attendance Table -->
+  <div class="attendance-table-container rounded-lg shadow-lg overflow-hidden"
+       style="background-color: var(--color-white);">
+
+    <!-- Table Wrapper for Horizontal Scroll -->
+    <div class="overflow-x-auto">
+      <table class="w-full min-w-max">
+
+        <!-- Table Header -->
+        <thead style="background-color: var(--color-light-blue);">
+          <tr>
+            <th class="px-6 py-4 text-left text-[20px] font-semibold  sticky left-0 z-10"
+                style="background-color: var(--color-light-blue); color: var(--color-oxford-blue);">
+              Student Name
+            </th>
+            <th *ngFor="let date of dateColumns"
+                class="px-4 py-4 text-center text-sm font-semibold min-w-[50px]"
+                style="color: var(--color-oxford-blue);">
+              {{ date }}
+            </th>
+          </tr>
+        </thead>
+
+        <!-- Table Body -->
+        <tbody class="divide-y" style="border-color: var(--color-warm-gray);">
+          <tr *ngFor="let student of getPaginatedStudents(); let i = index"
+              class="hover:bg-opacity-50 transition-colors duration-200"
+              [style.background-color]="i % 2 === 0 ? 'var(--color-white)' : 'var(--color-light-blue)'">
+
+            <!-- Student Name Column (Sticky) -->
+            <td class="px-6 py-4 font-medium sticky left-0 z-10"
+                [style.background-color]="i % 2 === 0 ? 'var(--color-white)' : 'var(--color-light-blue)'"
+                style="color: var(--color-oxford-blue);">
+              {{ student }}
+            </td>
+
+            <!-- Attendance Status Columns -->
+            <td *ngFor="let date of dateColumns"
+                class="px-4 py-4 text-center">
+
+              <div class="flex justify-center">
+                <ng-container [ngSwitch]="getAttendanceStatus(student, date)">
+
+                  <!-- Present Status -->
+                  <button *ngSwitchCase="'Present'"
+                          (click)="updateAttendanceStatus(student, date, 'Present')"
+                          class="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 present-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                    </svg>
+                  </button>
+
+                  <!-- Absent Status -->
+                  <button *ngSwitchCase="'Absent'"
+                          (click)="updateAttendanceStatus(student, date, 'Absent')"
+                          class="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 absent-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                    </svg>
+                  </button>
+
+                  <!-- Late Status -->
+                  <button *ngSwitchCase="'Late'"
+                          (click)="updateAttendanceStatus(student, date, 'Late')"
+                          class="w-8 h-8 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 late-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/>
+                    </svg>
+                  </button>
+
+                  <!-- No Status / Empty -->
+                  <span *ngSwitchDefault
+                        class="w-8 h-8 flex items-center justify-center text-lg font-medium"
+                        style="color: var(--color-cool-gray);">
+                    –
+                  </span>
+
+                </ng-container>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Empty State -->
+          <tr *ngIf="getPaginatedStudents().length === 0">
+            <td [attr.colspan]="dateColumns.length + 1"
+                class="px-6 py-12 text-center"
+                style="color: var(--color-cool-gray);">
+              No attendance records found for the selected filters.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Pagination Section -->
+  <div class="flex justify-between items-center mt-6" *ngIf="totalPages > 1">
+
+    <!-- Previous Button -->
+    <button
+      (click)="previousPage()"
+      [disabled]="currentPage === 1"
+      class="px-4 py-2 rounded-lg border transition-colors duration-200"
+      [class.opacity-50]="currentPage === 1"
+      [class.cursor-not-allowed]="currentPage === 1"
+      style="border-color: var(--color-warm-gray); color: var(--color-oxford-blue);">
+      Previous
+    </button>
+
+    <!-- Page Numbers -->
+    <div class="flex gap-2">
+      <button
+        *ngFor="let page of getPageNumbers()"
+        (click)="goToPage(page)"
+        class="w-10 h-10 rounded-lg border transition-all duration-200 font-medium"
+        [class.page-active]="page === currentPage"
+        [class.page-inactive]="page !== currentPage">
+        {{ page }}
+      </button>
+
+      <!-- Ellipsis if needed -->
+      <span *ngIf="totalPages > 5 && currentPage < totalPages - 2"
+            class="w-10 h-10 flex items-center justify-center"
+            style="color: var(--color-cool-gray);">
+        ...
+      </span>
+
+      <!-- Last page number if not visible -->
+      <button
+        *ngIf="totalPages > 5 && currentPage < totalPages - 2"
+        (click)="goToPage(totalPages)"
+        class="w-10 h-10 rounded-lg border transition-all duration-200 font-medium page-inactive">
+        {{ totalPages }}
+      </button>
+    </div>
+
+    <!-- Next Button -->
+    <button
+      (click)="nextPage()"
+      [disabled]="currentPage === totalPages"
+      class="px-4 py-2 rounded-lg border transition-colors duration-200"
+      [class.opacity-50]="currentPage === totalPages"
+      [class.cursor-not-allowed]="currentPage === totalPages"
+      style="border-color: var(--color-warm-gray); color: var(--color-oxford-blue);">
+      Next
+    </button>
+  </div>
+</div>

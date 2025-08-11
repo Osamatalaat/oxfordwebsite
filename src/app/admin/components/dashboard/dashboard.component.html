@@ -1,0 +1,196 @@
+<div class="min-h-screen ">
+
+
+  <div class="flex">
+
+
+    <!-- Main Content -->
+    <div class="flex-1 p-6">
+      <div class="grid grid-cols-12 gap-6">
+        <!-- Stats Cards -->
+        <div class="col-span-8">
+          <div class="grid grid-cols-4 gap-4 mb-6">
+            <div *ngFor="let stat of stats" class=" p-4" [ngClass]="stat.bgColor">
+              <div class="text-2xl font-bold" [ngClass]="stat.textColor">
+                {{ stat.value }}
+              </div>
+              <div class="text-sm opacity-80" [ngClass]="stat.textColor">
+                {{ stat.title }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="grid grid-cols-2 gap-6 mb-6">
+            <!-- Students Chart -->
+            <div class="bg-white  p-6 shadow-sm">
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-semibold text-blue-900">Students</h3>
+              </div>
+
+              <canvas baseChart [data]="studentsChartData" [options]="studentsChartOptions" [type]="'doughnut'">
+              </canvas>
+            </div>
+
+
+            <!-- Attendance Chart -->
+            <div class="bg-white  p-6 shadow-sm">
+              <h3 class="text-lg font-semibold mb-4 text-blue-900">Attendance</h3>
+
+              <canvas baseChart [data]="attendanceChartData" [options]="attendanceChartOptions" [type]="'line'">
+              </canvas>
+            </div>
+
+          </div>
+
+          <!-- Earnings Chart -->
+          <div class="bg-white  p-6 shadow-sm">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="text-lg font-semibold text-blue-900">Earnings</h3>
+            </div>
+
+            <canvas baseChart [data]="earningsChartData" [options]="earningsChartOptions" [type]="'bar'">
+            </canvas>
+          </div>
+
+        </div>
+
+        <!-- Right Sidebar -->
+        <div class="col-span-4 space-y-6">
+          <!-- Calendar -->
+          <div class="bg-white  p-4 shadow-sm">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="font-semibold text-blue-900">{{ currentMonth }}</h3>
+            </div>
+            <div class="grid grid-cols-7 gap-1 text-xs text-center mb-2">
+              <div *ngFor="let day of calendarDays" class="py-1 font-medium text-gray-600">
+                {{ day }}
+              </div>
+            </div>
+            <div class="grid grid-cols-7 gap-1 text-xs">
+              <div *ngFor="let item of calendarGrid" class="py-1 text-center"
+                [class.cursor-pointer]="item.isCurrentMonth" [class.hover:bg-gray-100]="item.isCurrentMonth"
+                [class.bg-black]="item.isToday" [class.text-white]="item.isToday" [class.rounded]="item.isToday"
+                (click)="onCalendarDayClick(item.day!)">
+                {{ item.day }}
+              </div>
+            </div>
+          </div>
+
+          <!-- Agenda -->
+          <div class="bg-white p-4 shadow-sm">
+            <h3 class="font-semibold mb-4 text-blue-900">Agenda</h3>
+            <div class="space-y-3">
+              @for (item of agendaItems; track item) {
+              <div class="flex items-center space-x-3">
+                <div class="text-xs text-gray-600">{{ item.time }}</div>
+                <div class="flex-1">
+                  <div class="text-sm font-medium text-blue-900">{{ item.title }}</div>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+
+
+          <!-- Messages -->
+          <div class="bg-white  p-4 shadow-sm">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="font-semibold text-blue-900">Messages</h3>
+              <span class="text-xs text-gray-600 cursor-pointer" (click)="onViewAllClick('messages')">View All</span>
+            </div>
+            <div class="space-y-3">
+              <div *ngFor="let msg of messages.slice(0, 3)" class="flex items-start space-x-3 cursor-pointer"
+                (click)="onMessageClick(msg)">
+                <div class="text-lg">{{ msg.avatar }}</div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex justify-between items-start">
+                    <div class="text-sm font-medium text-blue-900">{{ msg.name }}</div>
+                    <div class="text-xs text-gray-600">{{ msg.time }}</div>
+                  </div>
+                  <div class="text-xs truncate text-gray-600">{{ msg.message }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Activity -->
+          <div class="bg-white  p-4 shadow-sm">
+            <div class="flex justify-between items-center mb-4">
+              <h3 class="font-semibold text-blue-900">Recent Activity</h3>
+              <span class="text-xs text-gray-600 cursor-pointer" (click)="onViewAllClick('activity')">View All</span>
+            </div>
+            <div class="space-y-3">
+              <div *ngFor="let activity of recentActivity" class="flex items-start space-x-3">
+                <div class="w-2 h-2 rounded-full mt-2 bg-blue-600"></div>
+                <div class="flex-1">
+                  <div class="text-sm">
+                    <span class="font-medium text-blue-900">{{ activity.user }}</span>
+                    <span class="text-gray-600"> {{ activity.action }}</span>
+                  </div>
+                  <div class="text-xs text-gray-600">{{ activity.time }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Section -->
+      <div class="grid grid-cols-3 gap-6 mt-6">
+        <!-- Student Activity -->
+        <div class="bg-white  p-6 shadow-sm">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-semibold text-blue-900">Student Activity</h3>
+            <span class="text-xs text-gray-600 cursor-pointer" (click)="onViewAllClick('student-activity')">View
+              All</span>
+          </div>
+          <div class="space-y-4">
+            <div *ngFor="let activity of activities" class="flex items-start space-x-3">
+              <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z">
+                  </path>
+                </svg>
+              </div>
+              <div class="flex-1">
+                <div class="text-sm font-medium text-blue-900">{{ activity.title }}</div>
+                <div class="text-xs text-gray-600">{{ activity.participants }}</div>
+                <div class="text-xs text-gray-600">{{ activity.category }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Notice Board -->
+        <div class="bg-white  p-6 shadow-sm">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-semibold text-blue-900">Notice Board</h3>
+            <span class="text-xs text-gray-600 cursor-pointer" (click)="onViewAllClick('notices')">View All</span>
+          </div>
+          <div class="space-y-4">
+            <div *ngFor="let notice of notices.slice(0, 3)" class="border-l-4 border-blue-600 pl-3">
+              <div class="text-sm font-medium text-blue-900">{{ notice.title }}</div>
+              <div class="text-xs text-gray-600">{{ notice.author }}</div>
+              <div class="text-xs text-gray-600">{{ notice.date }}</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Today's Summary -->
+        <div class="bg-white  p-6 shadow-sm">
+          <div class="flex justify-between items-center mb-4">
+            <h3 class="font-semibold text-blue-900">Today's Summary</h3>
+          </div>
+          <div class="space-y-4">
+            <div *ngFor="let item of todaySummary" class="flex justify-between items-center">
+              <span class="text-sm text-gray-600">{{ item.label }}</span>
+              <span class="font-semibold" [ngClass]="item.color">{{ item.value }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

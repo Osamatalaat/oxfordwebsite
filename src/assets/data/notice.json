@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "title": "System Maintenance Scheduled",
+    "message": "The system will be down for maintenance on August 10 from 2 AM to 4 AM.",
+    "date": "2025-08-05",
+    "priority": "High",
+    "type": "System",
+    "status": "Unread"
+  },
+  {
+    "id": 2,
+    "title": "New Course Materials Available",
+    "message": "New materials have been uploaded for the AI course.",
+    "date": "2025-08-04",
+    "priority": "Medium",
+    "type": "Academic",
+    "status": "Read"
+  },
+  {
+    "id": 3,
+    "title": "Reminder: Tuition Fee Due",
+    "message": "Please pay your tuition fees before August 15.",
+    "date": "2025-08-01",
+    "priority": "High",
+    "type": "Finance",
+    "status": "Unread"
+  },
+  {
+    "id": 4,
+    "title": "Library Closed on Friday",
+    "message": "The library will be closed for cleaning on Friday.",
+    "date": "2025-07-30",
+    "priority": "Low",
+    "type": "General",
+    "status": "Read"
+  },
+  {
+    "id": 5,
+    "title": "Exam Timetable Released",
+    "message": "Check the dashboard for your upcoming exam timetable.",
+    "date": "2025-07-28",
+    "priority": "Medium",
+    "type": "Academic",
+    "status": "Unread"
+  },
+  {
+    "id": 6,
+    "title": "Update: Cafeteria Prices",
+    "message": "Cafeteria prices will be updated starting next week.",
+    "date": "2025-07-25",
+    "priority": "Low",
+    "type": "General",
+    "status": "Read"
+  },
+  {
+    "id": 7,
+    "title": "Important: Email System Upgrade",
+    "message": "Email system will be upgraded to enhance security.",
+    "date": "2025-07-23",
+    "priority": "High",
+    "type": "System",
+    "status": "Unread"
+  },
+  {
+    "id": 8,
+    "title": "Job Fair Announcement",
+    "message": "Join us for the annual job fair on August 20.",
+    "date": "2025-07-20",
+    "priority": "Medium",
+    "type": "Career",
+    "status": "Read"
+  },
+  {
+    "id": 9,
+    "title": "New Library Books Available",
+    "message": "Check out the new arrivals in the library.",
+    "date": "2025-07-18",
+    "priority": "Low",
+    "type": "General",
+    "status": "Unread"
+  },
+  {
+    "id": 10,
+    "title": "Scholarship Opportunities",
+    "message": "Apply for the new scholarship programs by August 30.",
+    "date": "2025-07-15",
+    "priority": "High",
+    "type": "Career",
+    "status": "Read"
+  },
+  {
+    "id": 11,
+    "title": "System Update Completed",
+    "message": "The system update has been successfully completed.",
+    "date": "2025-07-10",
+    "priority": "Medium",
+    "type": "System",
+    "status": "Unread"
+  },
+  {
+    "id": 12,
+    "title": "New Academic Year Begins",
+    "message": "The new academic year starts on September 1.",
+    "date": "2025-07-05",
+    "priority": "High",
+    "type": "Academic",
+    "status": "Read"
+  },
+  {
+    "id": 13,
+    "title": "Health and Safety Guidelines",
+    "message": "Please follow the updated health and safety guidelines on campus.",
+    "date": "2025-07-01",
+    "priority": "Medium",
+    "type": "General",
+    "status": "Unread"
+  },
+  {
+    "id": 14,
+    "title": "New Sports Facilities Opened",
+    "message": "The new sports facilities are now open for students.",
+    "date": "2025-06-28",
+    "priority": "Low",
+    "type": "General",
+    "status": "Read"
+  },
+  {
+    "id": 15,
+    "title": "Reminder: Course Registration",
+    "message": "Course registration for the next semester ends on July 15.",
+    "date": "2025-06-25",
+    "priority": "High",
+    "type": "Academic",
+    "status": "Unread"
+  },
+  {
+    "id": 16,
+    "title": "New Faculty Members",
+    "message": "We welcome new faculty members to our team.",
+    "date": "2025-06-20",
+    "priority": "Medium",
+    "type": "General",
+    "status": "Read"
+  },
+  {
+    "id": 17,
+    "title": "IT Support Available",
+    "message": "IT support is available for any technical issues.",
+    "date": "2025-06-15",
+    "priority": "Low",
+    "type": "System",
+    "status": "Unread"
+  },
+  {
+    "id": 18,
+    "title": "Career Counseling Sessions",
+    "message": "Sign up for career counseling sessions available next week.",
+    "date": "2025-06-10",
+    "priority": "High",
+    "type": "Career",
+    "status": "Read"
+  },
+  {
+    "id": 19,
+    "title": "Library Membership Renewal",
+    "message": "Renew your library membership before the end of the month.",
+    "date": "2025-06-05",
+    "priority": "Medium",
+    "type": "General",
+    "status": "Unread"
+  },
+  {
+    "id": 20,
+    "title": "New Online Learning Platform",
+    "message": "We have launched a new online learning platform for students.",
+    "date": "2025-06-01",
+    "priority": "Low",
+    "type": "Academic",
+    "status": "Read"
+  }
+]

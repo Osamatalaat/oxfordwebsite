@@ -1,0 +1,242 @@
+<!-- student.component.html -->
+<div class="min-h-screen bg-gray-50 p-6">
+  <!-- Header Section -->
+  <div class="bg-white shadow-sm p-6 mb-6">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+      <!-- Search Bar -->
+      <div class="relative flex-1 max-w-md">
+        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+          <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </div>
+        <input type="text" [(ngModel)]="searchTerm" (input)="onSearch()" placeholder="Search Here..."
+          class="block w-full pl-10 pr-3 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[var(--color-mid-blue)] focus:border-[var(--color-mid-blue)] text-sm" />
+      </div>
+
+      <!-- Right Section -->
+      <div class="flex items-center gap-3">
+        <!-- Sort Dropdown -->
+        <div class="relative">
+          <select [(ngModel)]="sortOption" (change)="onSortChange()"
+            class="appearance-none bg-white border border-gray-200 rounded-lg px-4 py-2.5 pr-8 text-sm focus:ring-2 focus:ring-[var(--color-mid-blue)] focus:border-[var(--color-mid-blue)]">
+            <option active value="department">Department</option>
+            <option value="specialization">Specialization</option>
+            <option value="name">Name</option>
+            <option value="name-desc">Name Z-A</option>
+          </select>
+          <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+            <svg class="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </div>
+        </div>
+
+        <!-- New instructor Button -->
+        <button (click)="openAddInstructorModal()"
+          class="bg-[var(--color-mid-blue)] hover:bg-[var(--color-oxford-blue)] text-white px-6 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 transition-colors">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+          </svg>
+          New Instructor
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bulk Actions Bar -->
+  <div class="bg-white shadow-sm p-4 mb-6" *ngIf="selectedInstructors.size > 0">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <input type="checkbox" [(ngModel)]="selectAll" (change)="toggleSelectAll()"
+          class="rounded border-gray-300 text-[var(--color-mid-blue)] focus:ring-[var(--color-mid-blue)]" />
+        <span class="text-sm text-[var(--color-cool-gray)]">
+          {{ selectedInstructors.size }} instructor(s) selected
+        </span>
+      </div>
+      <div class="flex items-center gap-2">
+        <button
+          class="px-3 py-1.5 bg-[var(--color-warm-gray)] text-[var(--color-oxford-blue)] rounded-lg text-sm font-medium hover:bg-[var(--color-light-blue)] transition-colors">
+          Bulk Edit
+        </button>
+        <button
+          class="px-3 py-1.5 bg-red-100 text-red-700 rounded-lg text-sm font-medium hover:bg-red-200 transition-colors">
+          Delete Selected
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Instructors Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-6">
+    <div *ngFor="let instructor of paginatedInstructors; trackBy: trackByInstructorId"
+      class="bg-white  shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden border border-gray-100"
+      [class.ring-2]="selectedInstructors.has(instructor.id)"
+      [class.ring-[var(--color-mid-blue)]]="selectedInstructors.has(instructor.id)"
+      [class.bg-blue-50]="selectedInstructors.has(instructor.id)">
+      <!-- Card Header -->
+      <div class="relative p-2 pb-2">
+
+
+        <!-- Action Menu -->
+        <div class="absolute top-4 right-4">
+          <button (click)="toggleActionMenu(instructor.id)"
+            class="p-2 rounded-full cursor-pointer hover:bg-gray-100 text-[var(--color-cool-gray)] hover:text-[var(--color-oxford-blue)] transition-colors">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z">
+              </path>
+            </svg>
+          </button>
+
+          <!-- Action Dropdown -->
+          <div *ngIf="activeActionMenu === instructor.id"
+            class="absolute right-0 top-10 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-1 z-20">
+            <button (click)="viewInstructor(instructor)"
+              class="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z">
+                </path>
+              </svg>
+              View Details
+            </button>
+            <button (click)="editInstructor(instructor)"
+              class="w-full px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
+                </path>
+              </svg>
+              Edit Instructor
+            </button>
+            <button (click)="deleteInstructor(instructor)"
+              class="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50 flex items-center gap-2">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                </path>
+              </svg>
+              Delete Instructor
+            </button>
+          </div>
+        </div>
+
+        <!-- Instructor Avatar and Basic Info -->
+        <div class="flex flex-col items-center text-center mt-8">
+          <div class="w-40 h-40 rounded-full mb-4 overflow-hidden border-3 border-[var(--color-warm-gray)]">
+            <img [src]="instructor.image" [alt]="instructor.name" class="w-full h-full object-cover">
+          </div>
+
+          <h3 class="font-semibold text-lg text-[var(--color-oxford-blue)] mb-1">
+            {{ instructor.name }}
+          </h3>
+
+          <p class="text-sm text-[var(--color-cool-gray)] mb-2">{{ instructor.specialization }}</p>
+
+           <div class="flex items-center justify-center gap-8 my-5">
+
+          <!-- Call Button -->
+          <button (click)="callInstructor(instructor.phone)"
+            class="w-11 h-11 cursor-pointer flex items-center justify-center bg-[var(--color-light-blue)] hover:bg-opacity-90 text-[var(--color-oxford-blue)]  rounded-full transition-all duration-200"
+            title="Call Instructor">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
+              </path>
+            </svg>
+          </button>
+
+          <!-- Email Button -->
+          <button (click)="emailInstructor(instructor.email)"
+            class="w-11 h-11 cursor-pointer flex items-center justify-center bg-[var(--color-light-blue)] hover:bg-opacity-90 text-[var(--color-oxford-blue)] rounded-full transition-all duration-200"
+            title="Email Instructor">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+              </path>
+            </svg>
+          </button>
+
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="paginatedInstructors.length === 0" class="text-center py-16">
+    <div class="bg-white rounded-xl shadow-sm p-12 mx-auto max-w-md">
+      <svg class="mx-auto h-16 w-16 text-[var(--color-warm-gray)] mb-6" fill="none" stroke="currentColor"
+        viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+        </path>
+      </svg>
+      <h3 class="text-xl font-semibold text-[var(--color-oxford-blue)] mb-2">No instructors found</h3>
+      <p class="text-[var(--color-cool-gray)] mb-6">
+        {{ searchTerm ? 'Try adjusting your search criteria.' : 'Get started by adding your first instructor.' }}
+      </p>
+      <button *ngIf="!searchTerm" (click)="openAddInstructorModal()"
+        class="bg-[var(--color-mid-blue)] hover:bg-[var(--color-oxford-blue)] text-white px-6 py-3 rounded-lg font-medium transition-colors">
+        Add First Instructor
+      </button>
+    </div>
+  </div>
+
+  <!-- Pagination -->
+  <div class="bg-white  shadow-sm mt-6 px-6 py-4 rounded-lg">
+    <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="text-sm text-[var(--color-cool-gray)]">
+        Showing {{ getShowingRange() }} of {{ totalPages }} data
+      </div>
+
+      <div class="flex items-center gap-2">
+        <button (click)="goToPage(1)" [disabled]="currentPage === 1"
+          class="p-2 rounded-lg border cursor-pointer border-gray-300 hover:bg-[var(--color-warm-gray)] hover:bg-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 19l-7-7 7-7m8 14l-7-7 7-7">
+            </path>
+          </svg>
+        </button>
+
+        <button (click)="previousPage()" [disabled]="currentPage === 1"
+          class="p-2 rounded-lg border cursor-pointer border-gray-300 hover:bg-[var(--color-warm-gray)] hover:bg-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
+
+        <div class="flex items-center gap-1">
+          <button *ngFor="let page of getVisiblePages()" (click)="goToPage(page)"
+            [class.bg-[var(--color-mid-blue)]]="page === currentPage" [class.text-white]="page === currentPage"
+            class="w-8 h-8 rounded-lg border cursor-pointer border-gray-300 hover:bg-[var(--color-warm-gray)] hover:bg-opacity-50 text-sm font-medium transition-colors"
+            [class.hover:bg-[var(--color-light-blue)]]="page === currentPage">
+            {{ page }}
+          </button>
+        </div>
+
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages"
+          class="p-2 rounded-lg border cursor-pointer border-gray-300 hover:bg-[var(--color-warm-gray)] hover:bg-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
+
+        <button (click)="goToPage(totalPages)" [disabled]="currentPage === totalPages"
+          class="p-2 rounded-lg border cursor-pointer border-gray-300 hover:bg-[var(--color-warm-gray)] hover:bg-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Click outside to close action menu -->
+<div *ngIf="activeActionMenu !== null" (click)="closeActionMenu()" class="fixed inset-0 z-10"></div>

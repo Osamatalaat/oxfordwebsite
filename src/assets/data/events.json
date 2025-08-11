@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "title": "Team Meeting",
+    "start": "2025-08-10",
+    "description": "Monthly strategy meeting with the marketing team",
+    "color": "#005ABB"
+  },
+  {
+    "id": 2,
+    "title": "Project Deadline",
+    "start": "2025-08-15",
+    "color": "#EF4444"
+  },
+  {
+    "id": 3,
+    "title": "Client Presentation",
+    "start": "2025-08-20",
+    "description": "Presentation for new client",
+    "color": "#22C55E"
+  }
+]

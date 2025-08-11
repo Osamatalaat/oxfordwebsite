@@ -1,0 +1,126 @@
+/* Custom CSS for Attendance Component */
+
+/* Present Button Styling */
+.present-btn {
+  background-color: var(--color-light-blue);
+  color: var(--color-white);
+  border: 2px solid var(--color-mid-blue);
+}
+
+.present-btn:hover {
+  background-color: var(--color-mid-blue);
+  transform: scale(1.1);
+}
+
+/* Absent Button Styling */
+.absent-btn {
+  background-color: #ef4444; /* Red color for absent */
+  color: var(--color-white);
+  border: 2px solid #dc2626;
+}
+
+.absent-btn:hover {
+  background-color: #dc2626;
+  transform: scale(1.1);
+}
+
+/* Late Button Styling */
+.late-btn {
+  background-color: var(--color-orange);
+  color: var(--color-white);
+  border: 2px solid #f59e0b;
+}
+
+.late-btn:hover {
+  background-color: #f59e0b;
+  transform: scale(1.1);
+}
+
+/* Pagination Styles */
+.page-active {
+  background-color: var(--color-mid-blue);
+  color: var(--color-white);
+  border-color: var(--color-mid-blue);
+}
+
+.page-inactive {
+  background-color: var(--color-white);
+  color: var(--color-oxford-blue);
+  border-color: var(--color-warm-gray);
+}
+
+.page-inactive:hover {
+  background-color: var(--color-light-blue);
+  color: var(--color-white);
+}
+
+/* Table Styling */
+.attendance-table-container {
+  border: 1px solid var(--color-warm-gray);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .attendance-container {
+    padding: 1rem;
+  }
+
+  .flex.gap-4 {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .text-3xl {
+    font-size: 1.5rem;
+  }
+}
+
+/* Sticky Column Shadow */
+.sticky {
+  box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom Scrollbar */
+.overflow-x-auto::-webkit-scrollbar {
+  height: 8px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-track {
+  background: var(--color-warm-gray);
+  border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb {
+  background: var(--color-mid-blue);
+  border-radius: 4px;
+}
+
+.overflow-x-auto::-webkit-scrollbar-thumb:hover {
+  background: var(--color-oxford-blue);
+}
+
+/* Filter Dropdown Styling */
+select:focus {
+  border-color: var(--color-mid-blue) !important;
+  box-shadow: 0 0 0 2px rgba(0, 81, 187, 0.2) !important;
+}
+
+/* Button Disabled State */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  transform: none !important;
+}
+
+/* Smooth Transitions */
+* {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Table Row Hover Effect */
+tbody tr:hover {
+  background-color: rgba(159, 201, 235, 0.1) !important;
+}

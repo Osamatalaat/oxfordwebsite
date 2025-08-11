@@ -1,0 +1,92 @@
+<header class="px-6 py-4 bg-[var(--color-oxford-blue)] border-b border-[var(--color-warm-gray)] shadow-sm">
+  <div class="flex items-center justify-end w-full">
+
+    <!-- Right Section - Icons and User -->
+    <div class="flex items-center gap-4">
+
+      <!-- Notification Icon -->
+      <div class="relative">
+        <button
+          class="p-2.5 text-[var(--color-oxford-blue)] bg-[var(--color-white)] cursor-pointer rounded-full shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200"
+          (click)="onNotificationClick()"
+          aria-label="Notifications">
+          <i class="fas fa-bell"></i>
+        </button>
+        <span
+          *ngIf="hasNotifications"
+          class="absolute -top-0.5 -right-0.5 h-2.5 w-2.5 bg-red-500 rounded-full ring-2 ring-white">
+        </span>
+      </div>
+
+      <!-- Settings/Menu Icon -->
+      <div class="relative">
+        <button
+          class="p-2.5 text-[var(--color-oxford-blue)] cursor-pointer bg-[var(--color-white)] rounded-full shadow-sm hover:shadow-md hover:scale-105 transition-all duration-200"
+          (click)="onSettingsClick()"
+          aria-label="Settings">
+          <i class="fas fa-comment"></i>
+        </button>
+      </div>
+
+      <!-- User Profile Section -->
+      <div class="flex items-center space-x-3 pl-4">
+        <!-- User Name -->
+        <div class="text-right hidden sm:block">
+          <div class="text-sm font-semibold text-[var(--color-white)]">{{ userName }}</div>
+          <div class="text-xs text-[var(--color-light-blue)]" *ngIf="userRole">{{ userRole }}</div>
+        </div>
+
+        <!-- User Avatar -->
+        <div class="relative">
+          <button
+            class="flex items-center space-x-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-mid-blue)] focus:ring-offset-2 rounded-full p-1 hover:bg-[var(--color-light-blue)] transition-all duration-200"
+            (click)="onUserMenuClick()"
+            aria-label="User menu">
+
+            <!-- Avatar Image or Initials -->
+            <div
+              class="h-9 w-9 bg-gradient-to-br from-[var(--color-mid-blue)] to-[var(--color-oxford-blue)] flex items-center justify-center text-white text-sm font-semibold rounded-full shadow-sm overflow-hidden ring-2 ring-white">
+              <img *ngIf="userAvatar" [src]="userAvatar" [alt]="userName + ' avatar'"
+                class="h-full w-full object-cover">
+              <span *ngIf="!userAvatar" class="text-xs">{{ getUserInitials() }}</span>
+            </div>
+
+            <!-- Dropdown Arrow -->
+            <svg class="h-3 w-3 text-[var(--color-cool-gray)] ml-1" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div
+            *ngIf="isUserMenuOpen"
+            class="absolute right-0 mt-3 w-56 bg-[var(--color-white)] border border-[var(--color-warm-gray)] rounded-xl shadow-lg z-50 overflow-hidden animate-fadeIn">
+            <div class="py-2">
+              <a href="#"
+                class="flex items-center px-4 py-3 text-sm text-[var(--color-cool-gray)] hover:bg-[var(--color-light-blue)] hover:text-[var(--color-oxford-blue)] transition-colors duration-200"
+                (click)="onMenuItemClick('profile', $event)">
+                <i class="fas fa-user mr-3 w-4 text-[var(--color-mid-blue)]"></i>
+                Profile Settings
+              </a>
+              <a href="#"
+                class="flex items-center px-4 py-3 text-sm text-[var(--color-cool-gray)] hover:bg-[var(--color-light-blue)] hover:text-[var(--color-oxford-blue)] transition-colors duration-200"
+                (click)="onMenuItemClick('preferences', $event)">
+                <i class="fas fa-sliders-h mr-3 w-4 text-[var(--color-mid-blue)]"></i>
+                Preferences
+              </a>
+              <div class="border-t border-[var(--color-warm-gray)] my-1"></div>
+              <a href="#"
+                class="flex items-center px-4 py-3 text-sm text-red-500 hover:bg-red-50 transition-colors duration-200"
+                (click)="onMenuItemClick('logout', $event)">
+                <i class="fas fa-sign-out-alt mr-3 w-4"></i>
+                Sign Out
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

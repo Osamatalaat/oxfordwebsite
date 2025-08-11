@@ -1,0 +1,184 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Sarah El-Masry",
+    "email": "sarah@university.edu",
+    "departmentId": 1,
+    "specialization": "Artificial Intelligence",
+    "phone": "+201234567890",
+    "image": "https://media.gettyimages.com/id/1275841749/photo/smiling-young-man-having-online-conference-from-home.jpg?s=612x612&w=gi&k=20&c=lDubq7qnvIxhewHReZC6xoHxKA-i_YVqcm5OCZ2auQ0="
+  },
+  {
+    "id": 2,
+    "name": "Dr. Ahmed Hassan",
+    "email": "ahmed.h@university.edu",
+    "departmentId": 2,
+    "specialization": "Financial Management",
+    "phone": "+201234567890",
+    "image": "https://t4.ftcdn.net/jpg/03/13/37/31/360_F_313373132_b9Az7XaGLRvSLHXlINXBIGPMIOLok8ZB.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Prof. Mona Tarek",
+    "email": "mona.t@university.edu",
+    "departmentId": 3,
+    "specialization": "Digital Marketing",
+    "phone": "+201234567890",
+    "image": "https://cdn-ildjlhn.nitrocdn.com/ShdQjynhTPEjJbNUkqxelmkTiksROVeW/assets/images/optimized/rev-78dbfab/advancedlifesupport.com.au/wp-content/uploads/elementor/thumbs/hero-ourinstructors-sq-qy568w2dgt44esqc7equtd7w4p2p8ecwr5slhxmr0g.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Dr. Omar Khaled",
+    "email": "omar.khaled@university.edu",
+    "departmentId": 4,
+    "specialization": "Cybersecurity",
+    "phone": "+201234567890",
+    "image": "https://media.istockphoto.com/id/1307615661/photo/smiling-indian-business-man-working-on-laptop-at-home-office-young-indian-student-or-remote.jpg?s=612x612&w=0&k=20&c=5Urz6DUqrMmg595KZVDXp86GvbRf5U8A55JG4ML4TG0="
+  },
+  {
+    "id": 5,
+    "name": "Dr. Layla Nour",
+    "email": "layla.nour@university.edu",
+    "departmentId": 5,
+    "specialization": "Data Science",
+    "phone": "+201234567890",
+    "image": "https://t4.ftcdn.net/jpg/03/13/37/31/360_F_313373132_b9Az7XaGLRvSLHXlINXBIGPMIOLok8ZB.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Dr. Youssef Farouk",
+    "email": "youssef.farouk@university.edu",
+    "departmentId": 6,
+    "specialization": "Machine Learning",
+    "phone": "+201234567890",
+    "image": "https://www.shutterstock.com/image-photo/happy-professional-business-man-company-600nw-2424450769.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Prof. Fatima Zohra",
+    "email": "fatima.zohra@university.edu",
+    "departmentId": 7,
+    "specialization": "Natural Language Processing",
+    "phone": "+201234567890",
+    "image": "https://as2.ftcdn.net/v2/jpg/06/05/46/27/500_F_605462783_WpFCk05qE0LTNHR2xdqKgCXJSB6OHfsw.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Dr. Hossam El-Din",
+    "email": "hossam.el-din@university.edu",
+    "departmentId": 8,
+    "specialization": "Cloud Computing",
+    "phone": "+201234567890",
+
+    "image": "https://img.freepik.com/premium-photo/mature-business-man-executive-manager-looking-laptop-watching-online-webinar-training-having-virtual-meeting-video-conference-doing-market-research-working-office_71455-1367.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Dr. Amina Said",
+    "email": "amina.said@university.edu",
+    "departmentId": 9,
+    "specialization": "Bioinformatics",
+    "phone": "+201234567890",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy0xQPE0flUNJi0AFDzC5iXvq7jKl3GV7UAQ&s"
+  },
+  {
+    "id": 10,
+    "name": "Prof. Tamer El-Sayed",
+    "email": "tamer.elsayed@university.edu",
+    "departmentId": 10,
+    "specialization": "Robotics",
+    "phone": "+201234567890",
+    "image": "https://img.freepik.com/free-photo/businessman-wearing-face-mask-while-giving-presentation-board-room_637285-9167.jpg?semt=ais_hybrid&w=740&q=80"
+  },
+    {
+    "id": 11,
+    "name": "Dr. Sarah El-Masry",
+    "email": "sarah@university.edu",
+    "departmentId": 1,
+    "specialization": "Artificial Intelligence",
+    "phone": "+201234567890",
+    "image": "https://media.gettyimages.com/id/1275841749/photo/smiling-young-man-having-online-conference-from-home.jpg?s=612x612&w=gi&k=20&c=lDubq7qnvIxhewHReZC6xoHxKA-i_YVqcm5OCZ2auQ0="
+  },
+  {
+    "id": 12,
+    "name": "Dr. Ahmed Hassan",
+    "email": "ahmed.h@university.edu",
+    "departmentId": 2,
+    "specialization": "Financial Management",
+    "phone": "+201234567890",
+    "image": "https://t4.ftcdn.net/jpg/03/13/37/31/360_F_313373132_b9Az7XaGLRvSLHXlINXBIGPMIOLok8ZB.jpg"
+  },
+  {
+    "id": 13,
+    "name": "Prof. Mona Tarek",
+    "email": "mona.t@university.edu",
+    "departmentId": 3,
+    "specialization": "Digital Marketing",
+    "phone": "+201234567890",
+    "image": "https://cdn-ildjlhn.nitrocdn.com/ShdQjynhTPEjJbNUkqxelmkTiksROVeW/assets/images/optimized/rev-78dbfab/advancedlifesupport.com.au/wp-content/uploads/elementor/thumbs/hero-ourinstructors-sq-qy568w2dgt44esqc7equtd7w4p2p8ecwr5slhxmr0g.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Dr. Omar Khaled",
+    "email": "omar.khaled@university.edu",
+    "departmentId": 4,
+    "specialization": "Cybersecurity",
+    "phone": "+201234567890",
+    "image": "https://media.istockphoto.com/id/1307615661/photo/smiling-indian-business-man-working-on-laptop-at-home-office-young-indian-student-or-remote.jpg?s=612x612&w=0&k=20&c=5Urz6DUqrMmg595KZVDXp86GvbRf5U8A55JG4ML4TG0="
+  },
+  {
+    "id": 15,
+    "name": "Dr. Layla Nour",
+    "email": "layla.nour@university.edu",
+    "departmentId": 5,
+    "specialization": "Data Science",
+    "phone": "+201234567890",
+    "image": "https://t4.ftcdn.net/jpg/03/13/37/31/360_F_313373132_b9Az7XaGLRvSLHXlINXBIGPMIOLok8ZB.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Dr. Youssef Farouk",
+    "email": "youssef.farouk@university.edu",
+    "departmentId": 6,
+    "specialization": "Machine Learning",
+    "phone": "+201234567890",
+    "image": "https://www.shutterstock.com/image-photo/happy-professional-business-man-company-600nw-2424450769.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Prof. Fatima Zohra",
+    "email": "fatima.zohra@university.edu",
+    "departmentId": 7,
+    "specialization": "Natural Language Processing",
+    "phone": "+201234567890",
+    "image": "https://as2.ftcdn.net/v2/jpg/06/05/46/27/500_F_605462783_WpFCk05qE0LTNHR2xdqKgCXJSB6OHfsw.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Dr. Hossam El-Din",
+    "email": "hossam.el-din@university.edu",
+    "departmentId": 8,
+    "specialization": "Cloud Computing",
+    "phone": "+201234567890",
+
+    "image": "https://img.freepik.com/premium-photo/mature-business-man-executive-manager-looking-laptop-watching-online-webinar-training-having-virtual-meeting-video-conference-doing-market-research-working-office_71455-1367.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Dr. Amina Said",
+    "email": "amina.said@university.edu",
+    "departmentId": 9,
+    "specialization": "Bioinformatics",
+    "phone": "+201234567890",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy0xQPE0flUNJi0AFDzC5iXvq7jKl3GV7UAQ&s"
+  },
+  {
+    "id": 20,
+    "name": "Prof. Tamer El-Sayed",
+    "email": "tamer.elsayed@university.edu",
+    "departmentId": 10,
+    "specialization": "Robotics",
+    "phone": "+201234567890",
+    "image": "https://img.freepik.com/free-photo/businessman-wearing-face-mask-while-giving-presentation-board-room_637285-9167.jpg?semt=ais_hybrid&w=740&q=80"
+  }
+]

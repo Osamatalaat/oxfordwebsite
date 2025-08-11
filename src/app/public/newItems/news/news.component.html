@@ -1,0 +1,153 @@
+<div class="min-h-screen bg-[var(--color-oxford-blue)]">
+  <div class="container mx-auto px-4 py-8">
+    <!-- Header -->
+    <div class="mb-8">
+      <h1 class="text-4xl font-bold text-[var(--color-white)] mb-2">Oxford News Center</h1>
+      <p class="text-[var(--color-cool-gray)] text-lg">Stay updated with the latest publications and insights</p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Sidebar -->
+      <aside class="lg:w-1/4">
+        <div class="bg-white  shadow-lg p-6 sticky top-8">
+          <h2 class="text-xl font-semibold text-[var(--color-oxford-blue)] mb-4">Categories</h2>
+
+          <ul class="space-y-3">
+            <li *ngFor="let category of categories">
+              <button (click)="onCategoryChange(category)"
+                [class]="selectedCategory === category
+                  ? 'w-full text-left px-4 py-2 cursor-pointer bg-[var(--color-mid-blue)] text-white font-medium transition-all duration-200'
+                  : 'w-full text-left px-4 py-2 cursor-pointer text-[var(--color-cool-gray)] hover:bg-gray-50 hover:text-[var(--color-oxford-blue)] transition-all duration-200'">
+                {{ category }}
+              </button>
+            </li>
+          </ul>
+
+          <!-- Stats -->
+          <div class="mt-8 p-4 bg-gray-50 ">
+            <h3 class="font-semibold text-[var(--color-oxford-blue)] mb-2">Quick Stats</h3>
+            <div class="space-y-2 text-sm text-[var(--color-cool-gray)]">
+              <div class="flex justify-between">
+                <span>Total Articles:</span>
+                <span class="font-medium">{{ newsItems.length }}</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Current Category:</span>
+                <span class="font-medium">{{ filteredNews.length }}</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Current Page:</span>
+                <span class="font-medium">{{ currentPage }}/{{ totalPages }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="lg:w-3/4">
+        <!-- Results Summary -->
+        <div class="mb-6">
+          <p class="text-[var(--color-cool-gray)]">
+            Showing {{ paginatedNews.length }} of {{ filteredNews.length }} articles
+            <span *ngIf="selectedCategory !== 'All'" class="text-[var(--color-mid-blue)] font-medium">
+              in {{ selectedCategory }}
+            </span>
+          </p>
+        </div>
+
+        <!-- News Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <article *ngFor="let newsItem of paginatedNews"
+            class="bg-white  shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <!-- Image -->
+            <div class="relative h-48 bg-gray-200">
+
+              <ng-container *ngFor="let image of newsItem.images">
+                <div class="relative h-48 bg-gray-200 mb-2">
+                  <img [src]="image" [alt]="newsItem.title" class="w-full h-full object-cover"
+                    (error)="onImageError($event)" />
+                  <div class="absolute top-4 right-4">
+                    <span class="bg-[var(--color-green)] text-white px-3 py-1  text-sm font-medium">
+                      New
+                    </span>
+                  </div>
+                </div>
+              </ng-container>
+
+
+              <div class="absolute top-4 right-4">
+                <span class="bg-[var(--color-green)] text-white px-3 py-1  text-sm font-medium">
+                  New
+                </span>
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+              <div class="mb-3">
+                <span class="text-[var(--color-cool-gray)] text-sm">
+                  {{ formatDate(newsItem.date) }}
+                </span>
+              </div>
+
+              <h3 class="text-xl font-bold text-[var(--color-oxford-blue)] mb-3 line-clamp-2">
+                {{ newsItem.title }}
+              </h3>
+
+              <p class="text-[var(--color-cool-gray)] mb-4 line-clamp-3">
+                {{ newsItem.content }}
+              </p>
+
+              <button class="cursor-pointer text-[var(--color-mid-blue)] font-medium hover:underline transition-all duration-200" (click)="goToDetails(newsItem.id)">
+                Read More →
+              </button>
+            </div>
+          </article>
+        </div>
+
+        <!-- Pagination -->
+        <nav *ngIf="totalPages > 1" class="flex justify-center" aria-label="Pagination">
+          <div class="flex items-center space-x-2">
+            <!-- Previous Button -->
+            <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1"
+              [class]="currentPage === 1
+                ? 'px-3 py-2  border border-[var(--color-warm-gray)] text-gray-400 cursor-not-allowed'
+                : 'px-3 py-2  cursor-pointer border border-[var(--color-warm-gray)] text-[var(--color-cool-gray)] hover:bg-white hover:text-[var(--color-oxford-blue)] transition-all duration-200'">
+              Previous
+            </button>
+
+            <!-- Page Numbers -->
+            <button *ngFor="let page of getPaginationNumbers()" (click)="goToPage(page)"
+              [class]="page === currentPage
+                ? 'w-10 h-10 cursor-pointer bg-[var(--color-mid-blue)] text-white font-medium'
+                : 'w-10 h-10 cursor-pointer border border-[var(--color-warm-gray)] text-[var(--color-cool-gray)] hover:bg-white hover:text-[var(--color-oxford-blue)] transition-all duration-200'">
+              {{ page }}
+            </button>
+
+            <!-- Next Button -->
+            <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPages"
+              [class]="currentPage === totalPages
+                ? 'px-3 py-2  border border-[var(--color-warm-gray)] text-gray-400 cursor-not-allowed'
+                : 'px-3 py-2 cursor-pointer border border-[var(--color-warm-gray)] text-[var(--color-cool-gray)] hover:bg-white hover:text-[var(--color-oxford-blue)] transition-all duration-200'">
+              Next
+            </button>
+          </div>
+        </nav>
+
+        <!-- Empty State -->
+        <div *ngIf="paginatedNews.length === 0" class="text-center py-12">
+          <div class="text-6xl mb-4">📰</div>
+          <h3 class="text-xl font-semibold text-[var(--color-white)] mb-2">No Articles Found</h3>
+          <p class="text-[var(--color-cool-gray)] mb-4">
+            No articles found in the {{ selectedCategory }} category.
+          </p>
+          <button (click)="onCategoryChange('All')"
+            class="px-6 py-3 bg-[var(--color-mid-blue)] text-white  hover:bg-opacity-90 transition-all duration-200">
+            Show All Articles
+          </button>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<div class="bg-[var(--color-oxford-blue)] text-[var(--color-warm-gray)] text-sm py-2 ">
+  <div class="w-full container mx-auto px-2 py-1 flex justify-between items-center">
+
+    <div class="hidden md:flex  space-x-6">
+      <a *ngFor="let link of leftNavLinks" [routerLink]="link.path" [ngClass]="link.class || 'navigation-left-side'">
+        {{ link.label }}
+      </a>
+    </div>
+
+
+    <div class="flex md:justify-between items-center space-x-16">
+      <div class="flex space-x-5">
+
+        <a *ngFor="let social of socialLinks" [routerLink]="social.path" [style.color]="social.color"
+          class="navigation-icons">
+          <i [class]="social.icon + ' text-1xl'"></i>
+        </a>
+      </div>
+
+      <div class="flex items-center text-[var(--color-warm-gray)] ">
+        <i class="fas fa-phone text-sm mr-2"></i>
+        <span>+44 1865 270000</span>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
+<nav class="bg-white shadow-md py-3">
+  <div class="w-full container mx-auto px-2">
+    <div class="flex justify-between items-center h-16">
+      <div class="flex items-center">
+        <img src="assets/images/logo2.png" alt="Oxford Logo" class="w-15 h-18 cursor-pointer mr-3" (click)="goToHome()">
+        <div>
+          <div class="text-xs text-[var(--color-cool-gray)] uppercase tracking-wide">UNIVERSITY OF</div>
+          <div class="text-xl font-bold text-[var(--color-oxford-blue)]">OXFORD</div>
+        </div>
+      </div>
+
+      <div class="hidden md:flex items-center space-x-16">
+        <a routerLink="/home" class=" font-bold text-[18px] text-[var(--color-oxford-blue)]">HOME</a>
+        <div *ngFor="let section of navSections" class="relative group">
+          <a [routerLink]="section.path" class="navbar-links">
+            {{ section.label }}
+            <i class="fas fa-chevron-down ml-2 text-xs"></i>
+          </a>
+          <div
+            class="absolute z-20 top-full left-0 mt-1 w-48 bg-white shadow-lg rounded-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <a *ngFor="let child of section.children" [routerLink]="child.path" class="navbar-droplist-links">
+              {{ child.label }}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <button (click)="navigateToLogin()"
+          class="bg-[var(--color-mid-blue)] text-white px-6 py-4 cursor-pointer font-medium hover:bg-[var(--color-oxford-blue)] transition-colors">
+          APPLY NOW
+        </button>
+
+      </div>
+
+      <div class="md:hidden">
+        <div
+          class="w-10 h-10 bg-[var(--color-oxford-blue)]  cursor-pointer flex items-center justify-center shadow-md hover:bg-[var(--color-mid-blue)] transition-colors duration-300">
+          <button (click)="toggleMobileMenu()" class="focus:outline-none cursor-pointer">
+            <i class="fas fa-bars text-white text-lg"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+<div class="md:hidden bg-white shadow-lg" [style.display]="showMobileMenu ? 'block' : 'none'">
+  <div class="px-4 py-2 space-y-2">
+    <a *ngFor="let section of navSections" [routerLink]="section.path"
+      class="block py-2 text-gray-700 hover:text-indigo-600">
+      {{ section.label }}
+    </a>
+  </div>
+</div>
+
+
+
+<!-- <div class="md:hidden bg-white shadow-lg" style="display: none;" id="mobile-menu">
+  <div class="px-4 py-2 space-y-2">
+    <a routerLink="/study" class="block py-2 text-gray-700 hover:text-indigo-600">STUDY</a>
+    <a routerLink="/academic" class="block py-2 text-gray-700 hover:text-indigo-600">ACADEMIC</a>
+    <a routerLink="/research" class="block py-2 text-gray-700 hover:text-indigo-600">RESEARCH</a>
+    <a routerLink="/about" class="block py-2 text-gray-700 hover:text-indigo-600">ABOUT</a>
+    <a routerLink="/engage" class="block py-2 text-gray-700 hover:text-indigo-600">ENGAGE</a>
+    <a routerLink="/student-life" class="block py-2 text-gray-700 hover:text-indigo-600">STUDENT LIFE</a>
+  </div>
+</div> -->

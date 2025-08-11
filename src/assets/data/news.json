@@ -1,0 +1,243 @@
+[
+  {
+    "id": 1,
+    "title": "New AI Lab Opens",
+    "date": "2025-08-01",
+    "content": "The Faculty of Computer Science has opened a new lab focused on AI research. lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "images": [
+      "https://m.media-amazon.com/images/I/71Pw0+naucL._UF894,1000_QL80_.jpg"
+    ],
+    "category": "Research",
+    "excerpt": "A new AI lab has been established to enhance research capabilities.",
+    "author": "Dr. Jane Smith"
+  },
+  {
+    "id": 2,
+    "title": "Graduation Ceremony 2025",
+    "date": "2025-07-15",
+    "content": "The graduation ceremony for the class of 2025 will be held on July 20th.",
+    "images": [
+      "https://www.alumni.ox.ac.uk/sites/default/files/styles/mt_image_4_3/public/alumni/images/media/fake_news_discussion_credit_nuffield_dept.jpg?itok=4KIWlbMX"
+    ],
+    "category": "Events",
+    "excerpt": "The graduation ceremony for the class of 2025 will be a momentous occasion.",
+    "author": "John Doe"
+  },
+  {
+    "id": 3,
+    "title": "Library Extends Hours",
+    "date": "2025-07-28",
+    "content": "The university library will now be open until midnight during finals week.",
+    "images": [
+       "https://www.alumni.ox.ac.uk/sites/default/files/styles/mt_image_4_3/public/alumni/images/media/fake_news_discussion_credit_nuffield_dept.jpg?itok=4KIWlbMX"
+    ],
+    "category": "Events",
+    "excerpt": "The university library will now be open until midnight during finals week.",
+    "author": "Jane Doe"
+  },
+  {
+    "id": 4,
+    "title": "New Sports Complex",
+    "date": "2025-07-10",
+    "content": "A new sports complex has been inaugurated, featuring state-of-the-art facilities.",
+    "images": [
+       "https://www.alumni.ox.ac.uk/sites/default/files/styles/mt_image_4_3/public/alumni/images/media/fake_news_discussion_credit_nuffield_dept.jpg?itok=4KIWlbMX"
+
+    ],
+    "category": "Events",
+    "excerpt": "A new sports complex has been inaugurated, featuring state-of-the-art facilities.",
+    "author": "Mark Johnson"
+  },
+  {
+    "id": 5,
+    "title": "Research Grant Awarded",
+    "date": "2025-06-30",
+    "content": "The university has received a significant grant for renewable energy research.",
+    "images": [
+      "https://verafiles.org/wp-content/uploads/8416/37/111721_vffc-smni-marcos-oxford-report-thumbnail.jpg"
+    ],
+    "category": "Research",
+    "excerpt": "The university has received a significant grant for renewable energy research.",
+    "author": "Dr. Emily White"
+  },
+  {
+    "id": 6,
+    "title": "Cultural Festival 2025",
+    "date": "2025-06-20",
+    "content": "The annual cultural festival will take place from June 25th to June 27th.",
+    "images": [
+      "https://oidigitalinstitute.com/wp-content/uploads/2025/07/84D6D0EB-56D6-4271-972E-80E2E205C998-7764-0000039699C54D71-opq3801567067-768x512.jpg"
+    ],
+    "category": "Events",
+    "excerpt": "The annual cultural festival will feature performances, workshops, and exhibitions.",
+    "author": "Alice Johnson"
+  },
+  {
+    "id": 7,
+    "title": "New Scholarship Program",
+    "date": "2025-05-15",
+    "content": "A new scholarship program has been launched for underprivileged students.",
+    "images": [
+      "https://static.wixstatic.com/media/a78b2e_a457790725974b9fb60fe05685565ffd~mv2.png/v1/fill/w_568,h_316,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a78b2e_a457790725974b9fb60fe05685565ffd~mv2.png"
+    ],
+    "category": "Events"  ,
+    "excerpt": "A new scholarship program has been launched to support underprivileged students.",
+    "author": "Alice Johnson"
+  },
+  {
+    "id": 8,
+    "title": "Tech Conference 2025",
+    "date": "2025-05-01",
+    "content": "The university will host a tech conference featuring industry leaders on May 10th.",
+    "images": [
+      "https://oidigitalinstitute.com/wp-content/uploads/2025/07/84D6D0EB-56D6-4271-972E-80E2E205C998-7764-0000039699C54D71-opq3801567067-768x512.jpg"
+    ],
+    "category": "Events",
+    "excerpt": "The university will host a tech conference featuring industry leaders on May 10th.",
+    "author": "Dr. Sarah Lee"
+  },
+  {
+    "id": 9,
+    "title": "New Faculty Members",
+    "date": "2025-04-20",
+    "content": "Several new faculty members have joined the university this semester.",
+    "images": [
+      "https://oidigitalinstitute.com/wp-content/uploads/2025/07/84D6D0EB-56D6-4271-972E-80E2E205C998-7764-0000039699C54D71-opq3801567067-768x512.jpg"
+    ],
+    "category": "Events",
+    "excerpt": "Several new faculty members have joined the university this semester.",
+    "author": "Dr. Emily White"
+  },
+  {
+    "id": 10,
+    "title": "Campus Renovation Plans",
+    "date": "2025-04-05",
+    "content": "Plans for campus renovations have been approved, focusing on sustainability.",
+    "images": [
+      "https://static.wixstatic.com/media/a78b2e_a457790725974b9fb60fe05685565ffd~mv2.png/v1/fill/w_568,h_316,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a78b2e_a457790725974b9fb60fe05685565ffd~mv2.png"
+    ],
+    "category": "Events",
+    "excerpt": "Plans for campus renovations have been approved, focusing on sustainability.",
+    "author": "Dr. Emily White"
+  },
+  {
+    "id": 11,
+    "title": "Student Exchange Program",
+    "date": "2025-03-15",
+    "content": "The university has launched a new student exchange program with international partners.",
+    "images": [
+      "https://verafiles.org/wp-content/uploads/8416/37/111721_vffc-smni-marcos-oxford-report-thumbnail.jpg"
+    ],
+    "category": "Events",
+    "excerpt": "The university has launched a new student exchange program with international partners.",
+    "author": "Dr. John Smith"
+  },
+  {
+    "id": 12,
+    "title": "New Research Center",
+    "date": "2025-02-28",
+    "content": "A new research center focusing on climate change has been established.",
+    "images": [
+      "https://verafiles.org/wp-content/uploads/8416/37/111721_vffc-smni-marcos-oxford-report-thumbnail.jpg"
+    ],
+    "category": "Research",
+    "excerpt": "A new research center focusing on climate change has been established.",
+    "author": "Dr. Jane Smith"
+  },
+  {
+    "id": 13,
+    "title": "Alumni Reunion 2025",
+    "date": "2025-02-10",
+    "content": "An alumni reunion is scheduled for March 5th, inviting all graduates.",
+    "images": [
+      "https://static.wixstatic.com/media/a78b2e_a457790725974b9fb60fe05685565ffd~mv2.png/v1/fill/w_568,h_316,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a78b2e_a457790725974b9fb60fe05685565ffd~mv2.png"
+    ],
+    "category": "Events",
+    "excerpt": "An alumni reunion is scheduled for March 5th, inviting all graduates.",
+    "author": "Dr. Emily White"
+  },
+  {
+    "id": 14,
+    "title": "New Online Courses",
+    "date": "2025-01-25",
+    "content": "The university has launched new online courses in various disciplines.",
+    "images": [
+      "https://oidigitalinstitute.com/wp-content/uploads/2025/07/84D6D0EB-56D6-4271-972E-80E2E205C998-7764-0000039699C54D71-opq3801567067-768x512.jpg"
+    ],
+    "category": "Events",
+    "excerpt": "The university has launched new online courses in various disciplines.",
+    "author": "Dr. Emily White"
+  },
+  {
+    "id": 15,
+    "title": "Community Service Day",
+    "date": "2025-01-10",
+    "content": "A community service day is planned for January 20th, encouraging student participation.",
+    "images": [
+      "https://oidigitalinstitute.com/wp-content/uploads/2025/07/84D6D0EB-56D6-4271-972E-80E2E205C998-7764-0000039699C54D71-opq3801567067-768x512.jpg"
+    ],
+    "category": "Events",
+    "excerpt": "A community service day is planned for January 20th, encouraging student participation.",
+    "author": "Dr. Emily White"
+  },
+  {
+    "id": 16,
+    "title": "New Campus Cafeteria",
+    "date": "2025-01-01",
+    "content": "A new cafeteria has opened on campus, offering a variety of healthy food options.",
+    "images": [
+      "https://static.wixstatic.com/media/a78b2e_a457790725974b9fb60fe05685565ffd~mv2.png/v1/fill/w_568,h_316,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a78b2e_a457790725974b9fb60fe05685565ffd~mv2.png"
+    ],
+    "category": "Education "  ,
+    "excerpt": "A new cafeteria has opened on campus, offering a variety of healthy food options.",
+    "author": "Dr. Emily White"
+  },
+  {
+    "id": 17,
+    "title": "International Collaboration",
+    "date": "2024-12-15",
+    "content": "The university has signed an agreement for international research collaboration.",
+    "images": [
+      "https://oidigitalinstitute.com/wp-content/uploads/2025/07/84D6D0EB-56D6-4271-972E-80E2E205C998-7764-0000039699C54D71-opq3801567067-768x512.jpg"
+    ],
+    "category": "Research"  ,
+    "excerpt": "The university has signed an agreement for international research collaboration.",
+    "author": "Dr. John Smith"
+  },
+  {
+    "id": 18,
+    "title": "New Library Resources",
+    "date": "2024-12-01",
+    "content": "The library has added new digital resources and books for students and faculty.",
+    "images": [
+      "https://oidigitalinstitute.com/wp-content/uploads/2025/07/84D6D0EB-56D6-4271-972E-80E2E205C998-7764-0000039699C54D71-opq3801567067-768x512.jpg"
+    ],
+    "category": "Research",
+    "excerpt": "The library has added new digital resources and books for students and faculty.",
+    "author": "Dr. John Smith"
+  },
+  {
+    "id": 19,
+    "title": "Sustainability Initiatives",
+    "date": "2024-11-20",
+    "content": "New sustainability initiatives have been launched to reduce the campus carbon footprint.",
+    "images": [
+      "https://oidigitalinstitute.com/wp-content/uploads/2025/07/84D6D0EB-56D6-4271-972E-80E2E205C998-7764-0000039699C54D71-opq3801567067-768x512.jpg"
+    ],
+    "category": "Research",
+    "excerpt": "New sustainability initiatives have been launched to reduce the campus carbon footprint.",
+    "author": "Dr. Jane Smith"
+  },
+  {
+    "id": 20,
+    "title": "Student Innovation Awards",
+    "date": "2024-11-05",
+    "content": "The annual student innovation awards ceremony will be held on November 15th.",
+    "images": [
+      "https://static.wixstatic.com/media/a78b2e_a457790725974b9fb60fe05685565ffd~mv2.png/v1/fill/w_568,h_316,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/a78b2e_a457790725974b9fb60fe05685565ffd~mv2.png"
+    ],
+    "category": "Events",
+    "excerpt": "The annual student innovation awards ceremony will be held on November 15th.",
+    "author": "Dr. Emily White"
+  }
+]

@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+:root {
+  --color-oxford-blue: #002147;      /* Primary dark blue */
+  --color-mid-blue: #005ABB;         /* Accent blue for buttons and links */
+  --color-light-blue: #9FC9EB;       /* Hover effects and backgrounds */
+  --color-warm-gray: #D6D2C4;        /* Background panels and secondary UI */
+  --color-warmDark-gray:#FFDEB8;
+  --color-cool-gray: #666666;        /* Standard body text */
+  --color-white: #FFFFFF;            /* White background or text */
+  --color-black: #000000;            /* For high contrast elements */
+  --color-green: #6CBF84;
+  --color-orange: #F29D4B;
+  
+}
+
+
+
+
+.navigation-left-side {
+  @apply text-[var(--color-warm-gray)] hover:text-[var(--color-light-blue)] font-bold transition-colors cursor-pointer;
+}
+
+.navigation-icons{
+  @apply w-7 h-7 bg-white rounded-full flex items-center justify-center  hover:scale-110 transition-colors cursor-pointer;
+}
+
+.navbar-links{
+  @apply flex items-center text-[var(--color-cool-gray)] hover:text-[var(--color-mid-blue)] font-medium cursor-pointer transition-colors;
+}
+.navbar-droplist-links{
+  @apply block px-4 py-2 text-[var(--color-cool-gray)] hover:bg-[var(--color-light-blue)]/20 hover:text-[var(--color-mid-blue)] cursor-pointer;
+}

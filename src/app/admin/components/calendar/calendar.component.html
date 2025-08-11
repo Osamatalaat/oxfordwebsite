@@ -1,0 +1,16 @@
+<div class="p-6">
+  <h2 class="text-2xl font-bold mb-6 text-[var(--color-oxford-blue)]">
+    📅 Calendar Events
+  </h2>
+
+  <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    <div *ngFor="let event of events"
+         class="bg-white p-4 rounded-xl shadow hover:shadow-md transition"
+         [style.borderLeft]="'6px solid ' + (event.color || '#005ABB')">
+      <h3 class="text-lg font-semibold">{{ event.title }}</h3>
+      <p class="text-sm text-gray-600">📅 {{ event.start }}</p>
+      <p class="text-sm text-gray-600" *ngIf="event.end">➡ {{ event.end }}</p>
+      <p class="mt-2 text-sm text-gray-500" *ngIf="event.description">{{ event.description }}</p>
+    </div>
+  </div>
+</div>
